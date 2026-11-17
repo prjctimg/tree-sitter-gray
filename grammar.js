@@ -312,8 +312,7 @@ module.exports = grammar({
       choice('when', 'switch'),
       $._expression,
       '{',
-      repeat($.is_clause),
-      optional($.default_clause),
+      repeat(choice($.is_clause, $.default_clause)),
       '}',
     ),
 

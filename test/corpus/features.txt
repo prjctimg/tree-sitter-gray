@@ -1375,3 +1375,44 @@ unsafe do mix(a u8, b u8) -> u8 {
             (identifier)
             (number
               (integer))))))))
+
+==============================
+When with default before an is branch
+==============================
+
+fn pick(x i64) {
+    when x {
+        default { println("other") }
+        is 1 { println("one") }
+    }
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    (parameter_list
+      (parameter
+        name: (identifier)
+        type: (type
+          (primitive_type))))
+    (block
+      (when_statement
+        (identifier)
+        (default_clause
+          (block
+            (expression_statement
+              (call_expression
+                function: (identifier)
+                (string
+                  (string_content))))))
+        (is_clause
+          (number
+            (integer))
+          (block
+            (expression_statement
+              (call_expression
+                function: (identifier)
+                (string
+                  (string_content))))))))))
